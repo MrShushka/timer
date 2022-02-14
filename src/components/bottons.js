@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 function Bottons(props) {
   var start_stop = !props.isOn? props.start: props.stop;
   var start_stop_class = !props.isOn? "btn btn-success": "btn btn-danger";
-
+ 
   var wait_class = !props.isOn?"btn btn-secondary disabled":  "btn btn-warning";
   var reset_class = props.reset? "btn btn-primary" : "btn btn-secondary disabled";
   
