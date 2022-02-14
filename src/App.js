@@ -27,20 +27,6 @@ function App() {
       unsubscribe.next();
       unsubscribe.complete();
     };
-    // let interv
-    // if (isOn){
-    //   interv = setInterval (()=> {
-    //     setTime(time + 1);
-    //   }, 100)
-    // }
-    // else {
-    //   clearInterval(interv);
-    // }
-
-    // return () => {
-    //   clearInterval(interv);
-    // }
-    
   }, );
   
 
@@ -48,28 +34,21 @@ function App() {
     setIsON(true);
   }
 
-  const resetHandler = () => {
+  const stopResetHandler = () => {
     setTime(0);
-    console.log("rest");
-  }
-
-  const stopHandler = () =>{
     setIsON(false);
-    setTime(0);
-    console.log("stop");
+    console.log("rest");
   }
 
   const waitHandler = () => {
     setIsON(false);
   }
 
-  
-  
   return (
     <div className="main-section">
       
       <Timer time = {time}/>
-      <Bottons wait = {waitHandler} start = {startHandler} stop = {stopHandler} reset = {time!== 0?resetHandler:null} isOn = {isOn}/>
+      <Bottons wait = {waitHandler} start = {startHandler} stop = {stopResetHandler} isOn = {isOn}/>
     </div>
   );
 }
