@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
+
+import { useDispatch, useSelector } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.css';
 import { interval, Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
@@ -7,8 +9,8 @@ import Bottons from './bottons';
 import './TimerPage.css';
 
 function TimerPage() {
-  const [time, setTime] = useState (0);
-  const [isOn, setIsON] = useState (false);
+    const isOn = useSelector((state)=> state.isOn)
+    const dispatch = useDispatch()
 
   useEffect(()=>{
     const unsubscribe = new Subject();
@@ -16,7 +18,7 @@ function TimerPage() {
         .pipe(takeUntil(unsubscribe))
         .subscribe(() => {
           if (isOn) {
-            setTime(val => val + 1);
+            dispatch({type: 'INCRIMENT'});
           }
         });
     return () => {
@@ -25,24 +27,10 @@ function TimerPage() {
     };
   }, ); 
 
-  const startHandler = () =>{
-    setIsON(true);
-  }
-
-  const stopResetHandler = () => {
-    setTime(0);
-    setIsON(false);
-    console.log("rest");
-  }
-
-  const waitHandler = () => {
-    setIsON(false);
-  }
-
   return (
     <div className="main-section">
-      <Timer time = {time}/>
-      <Bottons wait = {waitHandler} start = {startHandler} stop = {stopResetHandler} isOn = {isOn} />
+      <Timer />
+      <Bottons  />
     </div>
   );
 }

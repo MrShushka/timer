@@ -1,10 +1,14 @@
 import React from 'react';
-import TimerPage from './components/TimerPage'
+import TimerPage from './components/TimerPage';
+import {Provider} from 'react-redux';
+import store from './components/store';
 
 function App() {
   
   return (
-    <TimerPage/>
+    <Provider store = {store}>
+      <TimerPage/>
+    </Provider> 
   );
 }
 

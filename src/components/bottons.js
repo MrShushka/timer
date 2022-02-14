@@ -1,18 +1,21 @@
 import React from 'react';
+import { useDispatch, useSelector} from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.css';
 
 
 
 function Bottons(props) {
-  var start_stop_class = !props.isOn? "btn btn-success": "btn btn-secondary disabled";
-  var wait_class = !props.isOn?"btn btn-secondary disabled":  "btn btn-warning";
+  const dispatch = useDispatch()
+  const isOn = useSelector((state)=> state.isOn)
+  var start_stop_class = !isOn? "btn btn-success": "btn btn-secondary disabled";
+  var wait_class = !isOn?"btn btn-secondary disabled":  "btn btn-warning";
   var reset_class = "btn btn-danger";
 
     return (
     <div className="Bottons">
-        <botton onClick = {props.start} className = {start_stop_class}>Start</botton>
-        <botton onClick = {props.wait} className = {wait_class}>Wait</botton>
-        <botton onClick = {props.stop} className = {reset_class}>Stop</botton>
+        <botton onClick = {() => dispatch({type: 'START'})} className = {start_stop_class}>Start</botton>
+        <botton onClick = {() => dispatch({type: 'WAIT'})} className = {wait_class}>Wait</botton>
+        <botton onClick = {() => dispatch({type: 'STOP'})} className = {reset_class}>Stop</botton>
         
     </div>
   );
