@@ -1,0 +1,24 @@
+body {
+  background-color: darkslategray;
+}
+
+.main-section {
+  background: transparent;
+  max-width: 600px;
+  width: 90%;
+  height: 500px;
+  margin: 30px auto;
+  padding: 60px 0px;
+  text-align: center;
+}
+
+span{
+  background:#00ABA9;
+  color: #fff;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 22px;
+  padding: 20px;
+  border-radius: 5px;
+  width: 70px;
+}

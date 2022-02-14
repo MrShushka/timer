@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 function Bottons(props) {
   var start_stop_class = !props.isOn? "btn btn-success": "btn btn-secondary disabled";
   var wait_class = !props.isOn?"btn btn-secondary disabled":  "btn btn-warning";
-  var reset_class = props.isOn? "btn btn-danger": "btn btn-secondary disabled";
+  var reset_class = "btn btn-danger";
 
     return (
     <div className="Bottons">
